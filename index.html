@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EliteCuts Barbershop</title>
+<title>💈 RICHIE CUTZ BARBERSHOP 💈</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
@@ -62,6 +62,12 @@ background:none;
 border:none;
 color:#ccc;
 cursor:pointer;
+font-size:16px;
+transition:0.3s;
+}
+
+nav button:hover{
+color:white;
 }
 
 section{
@@ -72,6 +78,8 @@ margin:auto;
 
 h2{
 font-family:"Playfair Display";
+font-size:28px;
+margin-bottom:20px;
 }
 
 .card{
@@ -80,6 +88,11 @@ padding:15px;
 margin:10px 0;
 border-radius:10px;
 border:1px solid #222;
+transition:0.3s;
+}
+
+.card:hover{
+border-color:#D4AF37;
 }
 
 input,textarea,select{
@@ -90,6 +103,8 @@ background:#111;
 border:1px solid #333;
 color:white;
 border-radius:5px;
+box-sizing:border-box;
+font-family:Poppins;
 }
 
 button{
@@ -101,6 +116,13 @@ width:100%;
 margin-top:10px;
 font-weight:bold;
 cursor:pointer;
+border-radius:5px;
+transition:0.3s;
+}
+
+button:hover{
+background:#D4AF37;
+color:black;
 }
 
 .grid{
@@ -115,6 +137,13 @@ width:100%;
 height:180px;
 object-fit:cover;
 border-radius:10px;
+border:2px solid #222;
+transition:0.3s;
+}
+
+.grid img:hover{
+border-color:#D4AF37;
+transform:scale(1.03);
 }
 
 .hidden{display:none;}
@@ -123,22 +152,29 @@ footer{
 text-align:center;
 padding:30px;
 color:#666;
+border-top:1px solid #222;
+margin-top:40px;
 }
+
+/* SUCCESS SCREEN */
+#successScreen{text-align:center;padding:80px 20px;min-height:50vh;}
+#successScreen h1{color:#4CAF50;font-size:36px;font-family:"Playfair Display";}
+#successScreen p{color:#aaa;font-size:16px;}
 </style>
 </head>
 
 <body>
 
 <!-- HERO -->
-<div class="hero">
+<div class="hero" id="heroSection">
 <div>
-<h1>ELITECUTS</h1>
+<h1>💈 RICHIE CUTZ 💈</h1>
 <p>Sharp cuts. Clean style. Premium grooming.</p>
 </div>
 </div>
 
 <!-- NAV -->
-<nav>
+<nav id="navBar">
 <button onclick="show('home')">Home</button>
 <button onclick="show('services')">Services</button>
 <button onclick="show('booking')">Book</button>
@@ -146,168 +182,235 @@ color:#666;
 <button onclick="show('reviews')">Reviews</button>
 </nav>
 
+<!-- ALL PAGES WRAPPER -->
+<div id="mainContent">
+
 <!-- HOME -->
 <section id="home">
-<h2>Welcome</h2>
-<p style="color:#aaa">Premium barbershop experience with modern precision and style.</p>
+<h2>Welcome to RICHIE CUTZ</h2>
+<p style="color:#aaa;line-height:1.8">Experience the best grooming in town. Our professional barbers deliver precision cuts and premium service in a modern, comfortable environment. Book your appointment today and step out looking sharp.</p>
 </section>
 
 <!-- SERVICES -->
 <section id="services" class="hidden">
 <h2>Services & Prices</h2>
-<div class="card">✂️ Haircut - GH₵50</div>
-<div class="card">🪒 Beard Trim - GH₵30</div>
-<div class="card">💈 VIP Service - GH₵120</div>
+<div class="card">✂️ Haircut - GH₵40</div>
+<div class="card">🪒 Beard Trim - GH₵1</div>
+<div class="card">💈 VIP Service - GH₵100</div>
+<div class="card">✨ Haircut + Beard Combo - GH₵45</div>
+<div class="card">🔥 Kids Cut - GH₵25</div>
 </section>
 
 <!-- BOOKING -->
 <section id="booking" class="hidden">
 <h2>Book Appointment</h2>
-
+<p style="color:#aaa">Fill the form and choose your payment method</p>
 <form id="bookingForm">
-
-<input type="text" placeholder="Full Name" required>
-<input type="tel" placeholder="Phone Number" required>
-<input type="date" required>
-<input type="time" required>
-
+<input type="text" id="name" placeholder="Full Name" required>
+<input type="tel" id="phone" placeholder="Phone Number" required>
+<input type="email" id="email" placeholder="Email Address" required>
+<input type="date" id="date" required>
+<input type="time" id="time" required>
 <select id="service" required>
 <option value="">Select Service</option>
-<option value="Haircut - 50">Haircut</option>
-<option value="Beard - 30">Beard Trim</option>
-<option value="VIP - 120">VIP</option>
+<option value="Haircut - 40">Haircut - GH₵40</option>
+<option value="Beard - 1">Beard Trim - GH₵1</option>
+<option value="VIP - 100">VIP - GH₵100</option>
+<option value="Combo - 45">Haircut + Beard - GH₵45</option>
+<option value="Kids - 25">Kids Cut - GH₵25</option>
 </select>
-
 <select id="payment" required>
 <option value="">Payment Method</option>
-<option value="Mobile Money">Mobile Money</option>
+<option value="Mobile Money">Mobile Money / Card - Paystack</option>
 <option value="Pay at Shop">Pay at Shop</option>
 </select>
-
 <button type="submit">Confirm Booking</button>
-
 </form>
 </section>
 
 <!-- GALLERY -->
 <section id="gallery" class="hidden">
-<h2>Gallery</h2>
-
+<h2>Our Work Gallery</h2>
 <div class="grid">
 <img src="https://images.unsplash.com/photo-1517832606299-7ae9b720a186">
 <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033">
 <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9">
 <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a">
+<img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70">
+<img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1">
 </div>
 </section>
 
 <!-- REVIEWS -->
 <section id="reviews" class="hidden">
-<h2>Reviews</h2>
-
+<h2>Customer Reviews</h2>
 <form id="reviewForm">
-<textarea placeholder="Write your review..." required></textarea>
-<button type="submit">Submit</button>
+<textarea placeholder="Write your review..." rows="4" required></textarea>
+<button type="submit">Submit Review</button>
 </form>
-
-<div id="reviewBox"></div>
+<div id="reviewBox" style="margin-top:20px"></div>
 </section>
 
-<footer>
-©️ 2026 EliteCuts Barbershop
+</div> <!-- end mainContent -->
+
+<!-- SUCCESS SCREEN - HIDDEN BY DEFAULT -->
+<section id="successScreen" class="hidden">
+<h1>✅ Payment Successful!</h1>
+<p>Thank you for booking with RICHIE CUTZ. We have received your payment and booking details.</p>
+<p style="color:#D4AF37">We will contact you soon to confirm your appointment.</p>
+<button onclick="goHome()">Back to Home</button>
+</section>
+
+<footer id="footer">
+©️ 2026 💈 RICHIE CUTZ BARBERSHOP 💈 | All Rights Reserved
 </footer>
 
 <script>
+// INIT EMAILJS - YOUR CORRECT KEY FROM YOUR CODE
 emailjs.init("RTqqdFKtqt6kjRQUy");
 
-// NAV
+// CHECK IF URL HAS?reference= FROM PAYSTACK ON PAGE LOAD
+window.addEventListener('load', function(){
+const urlParams = new URLSearchParams(window.location.search);
+const reference = urlParams.get('reference');
+if(reference){
+handlePaymentSuccess(reference);
+}
+});
+
+// NAV FUNCTION
 function show(page){
-document.querySelectorAll("section").forEach(s=>s.classList.add("hidden"));
+document.querySelectorAll("#mainContent section").forEach(s=>s.classList.add("hidden"));
 document.getElementById(page).classList.remove("hidden");
+window.scrollTo(0,0);
+}
+
+function goHome(){
+window.history.replaceState({}, document.title, window.location.pathname);
+document.getElementById("successScreen").classList.add("hidden");
+document.getElementById("heroSection").classList.remove("hidden");
+document.getElementById("navBar").classList.remove("hidden");
+document.getElementById("mainContent").classList.remove("hidden");
+document.getElementById("footer").classList.remove("hidden");
+show('home');
+}
+
+// HANDLE SUCCESS AFTER PAYMENT
+function handlePaymentSuccess(reference){
+const booking = JSON.parse(localStorage.getItem('lastBooking')) || {};
+
+// Hide everything, show success screen
+document.getElementById("heroSection").classList.add("hidden");
+document.getElementById("navBar").classList.add("hidden");
+document.getElementById("mainContent").classList.add("hidden");
+document.getElementById("footer").classList.add("hidden");
+document.getElementById("successScreen").classList.remove("hidden");
+
+// Send email to you with booking details
+emailjs.send("service_yxf9lbp","template_hiukdhm",{
+customer_name:booking.name,
+customer_phone:booking.phone,
+customer_email:booking.email,
+appointment_date:booking.date,
+appointment_time:booking.time,
+service:booking.service + " | Paystack Ref: " + reference
+}).then(()=>{
+console.log("Email sent to shop successfully");
+}).catch((err)=>{
+console.log("Email failed to send", err);
+});
+
+localStorage.removeItem('lastBooking');
 }
 
 // BOOKING SYSTEM
 let bookingForm = document.getElementById("bookingForm");
-
 bookingForm.addEventListener("submit", function(e){
 e.preventDefault();
 
-let inputs = this.querySelectorAll("input");
-
-let name = inputs[0].value;
-let phone = inputs[1].value;
-let date = inputs[2].value;
-let time = inputs[3].value;
-
+let name = document.getElementById("name").value;
+let phone = document.getElementById("phone").value;
+let email = document.getElementById("email").value;
+let date = document.getElementById("date").value;
+let time = document.getElementById("time").value;
 let service = document.getElementById("service").value;
 let payment = document.getElementById("payment").value;
 
-// PAYSTACK FLOW
-if(payment === "Mobile Money"){
+// Save to localStorage so we can use it after payment redirect
+localStorage.setItem('lastBooking', JSON.stringify({name,phone,email,date,time,service}));
 
+// Get price from selected service - format: "Haircut - 40"
+let price = parseInt(service.split(" - ")[1]);
+let amount = price * 100; // Paystack uses pesewas
+
+// PAYSTACK FLOW FOR ONLINE PAYMENT
+if(payment === "Mobile Money"){
 let handler = PaystackPop.setup({
 key: "pk_live_ee4ba088fef0cd4c263f3b0ead207aeaa934bde3",
-email: "customer@email.com",
-amount: 5000,
+email: email,
+amount: amount,
 currency: "GHS",
-
-callback: function(){
-alert("Payment successful!");
-sendEmail(name,phone,date,time,service);
+ref: 'RC_' + Math.floor(Math.random() * 1000000),
+metadata: {
+custom_fields: [
+{ display_name: "Service", variable_name: "service", value: service },
+{ display_name: "Phone", variable_name: "phone", value: phone },
+{ display_name: "Name", variable_name: "name", value: name }
+]
 },
-
+// KEY FIX: Reload page with?reference= so we can show success screen and send email
+callback: function(response){
+window.location.href = window.location.pathname + "?reference=" + response.reference;
+},
 onClose: function(){
-alert("Payment cancelled");
+alert("Payment window closed. Booking not completed.");
 }
 });
-
 handler.openIframe();
-
 }else{
-sendEmail(name,phone,date,time,service);
+// PAY AT SHOP - Send email immediately
+sendEmail(name,phone,email,date,time,service);
 }
-
 });
 
-// EMAIL SEND
-function sendEmail(name,phone,date,time,service){
-
-emailjs.send("service_wzrlvsj","template_hiukdhm",{
+// EMAIL SEND FUNCTION FOR PAY AT SHOP
+function sendEmail(name,phone,email,date,time,service){
+emailjs.send("service_yxf9lbp","template_hiukdhm",{
 customer_name:name,
 customer_phone:phone,
+customer_email:email,
 appointment_date:date,
 appointment_time:time,
 service:service
 }).then(()=>{
-alert("Booking sent successfully!");
+alert("Booking sent successfully! We will contact you soon.");
 document.getElementById("bookingForm").reset();
 }).catch(()=>{
-alert("Failed to send booking");
+alert("Failed to send booking. Please check your internet connection.");
 });
-
 }
 
-// REVIEWS
+// REVIEWS SYSTEM
 document.getElementById("reviewForm").addEventListener("submit",function(e){
 e.preventDefault();
-
 let review=this.querySelector("textarea").value;
-
 let reviews=JSON.parse(localStorage.getItem("reviews")||"[]");
-reviews.push(review);
+reviews.push({text:review, date:new Date().toLocaleDateString()});
 localStorage.setItem("reviews",JSON.stringify(reviews));
-
 loadReviews();
 this.reset();
+alert("Thank you for your review!");
 });
 
 function loadReviews(){
 let reviews=JSON.parse(localStorage.getItem("reviews")||"[]");
-
-document.getElementById("reviewBox").innerHTML=
-reviews.map(r=>`<div class="card">${r}</div>`).join("");
+if(reviews.length === 0){
+document.getElementById("reviewBox").innerHTML = '<p style="color:#666">No reviews yet. Be the first!</p>';
+return;
 }
-
+document.getElementById("reviewBox").innerHTML=
+reviews.reverse().map(r=>`<div class="card"><p>${r.text}</p><small style="color:#666">${r.date}</small></div>`).join("");
+}
 loadReviews();
 </script>
 
