@@ -265,7 +265,7 @@ margin-top:40px;
 
 <script>
 // INIT EMAILJS - YOUR CORRECT KEY FROM YOUR CODE
-emailjs.init("cPr_2pAqePAoXn5Jv");
+emailjs.init("cPr_2pAqePAoXn5JV");
 
 // CHECK IF URL HAS?reference= FROM PAYSTACK ON PAGE LOAD
 window.addEventListener('load', function(){
@@ -304,7 +304,7 @@ document.getElementById("mainContent").classList.add("hidden");
 document.getElementById("footer").classList.add("hidden");
 document.getElementById("successScreen").classList.remove("hidden");
 
-// Send email to you with booking details
+// Send email with booking details
 emailjs.send("service_pas05pj","template_8clcpvx",{
 customer_name:booking.name,
 customer_phone:booking.phone,
@@ -379,13 +379,13 @@ customer_phone:phone,
 customer_email:email,
 appointment_date:date,
 appointment_time:time,
-service:service,
-message:message
+service:service
 }).then(()=>{
 alert("Booking sent successfully! We will contact you soon.");
 document.getElementById("bookingForm").reset();
-}).catch(()=>{
-alert("Failed to send booking. Please check your internet connection.");
+}).catch((err)=>{
+console.log("Email failed to send", err);
+alert("Failed to send booking. Please try again.");
 });
 }
 
