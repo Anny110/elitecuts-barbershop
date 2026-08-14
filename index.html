@@ -196,9 +196,8 @@ margin-top:40px;
 <h2>Services & Prices</h2>
 <div class="card">✂️ Haircut - GH₵40</div>
 <div class="card">🪒 Beard Trim - GH₵1</div>
-<div class="card">💈 VIP Service - GH₵100</div>
-<div class="card">✨ Haircut + Beard Combo - GH₵45</div>
-<div class="card">🔥 Kids Cut - GH₵25</div>
+<div class="card">💈 Home Service - GH₵100</div>
+<div class="card">🔥 Kids Cut - GH₵20</div>
 </section>
 
 <!-- BOOKING -->
@@ -215,9 +214,8 @@ margin-top:40px;
 <option value="">Select Service</option>
 <option value="Haircut - 40">Haircut - GH₵40</option>
 <option value="Beard - 1">Beard Trim - GH₵1</option>
-<option value="VIP - 100">VIP - GH₵100</option>
-<option value="Combo - 45">Haircut + Beard - GH₵45</option>
-<option value="Kids - 25">Kids Cut - GH₵25</option>
+<option value="Home Service - 100">Home Service - GH₵100</option>
+<option value="Kids - 25">Kids Cut - GH₵20</option>
 </select>
 <select id="payment" required>
 <option value="">Payment Method</option>
@@ -267,7 +265,7 @@ margin-top:40px;
 
 <script>
 // INIT EMAILJS - YOUR CORRECT KEY FROM YOUR CODE
-emailjs.init("RTqqdFKtqt6kjRQUy");
+emailjs.init("cPr_2pAqePAoXn5jv");
 
 // CHECK IF URL HAS?reference= FROM PAYSTACK ON PAGE LOAD
 window.addEventListener('load', function(){
@@ -346,7 +344,7 @@ let amount = price * 100; // Paystack uses pesewas
 // PAYSTACK FLOW FOR ONLINE PAYMENT
 if(payment === "Mobile Money"){
 let handler = PaystackPop.setup({
-key: "pk_live_ee4ba088fef0cd4c263f3b0ead207aeaa934bde3",
+key: "pk_test_d7cf5ecad3865307a6e5c263d68e7d1923b353ff",
 email: email,
 amount: amount,
 currency: "GHS",
@@ -375,13 +373,14 @@ sendEmail(name,phone,email,date,time,service);
 
 // EMAIL SEND FUNCTION FOR PAY AT SHOP
 function sendEmail(name,phone,email,date,time,service){
-emailjs.send("service_yxf9lbp","template_hiukdhm",{
+emailjs.send("service_pas05pj","template_8clcpvxS",{
 customer_name:name,
 customer_phone:phone,
 customer_email:email,
 appointment_date:date,
 appointment_time:time,
-service:service
+service:service,
+message:message
 }).then(()=>{
 alert("Booking sent successfully! We will contact you soon.");
 document.getElementById("bookingForm").reset();
