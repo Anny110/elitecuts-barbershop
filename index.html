@@ -195,7 +195,7 @@ margin-top:40px;
 <section id="services" class="hidden">
 <h2>Services & Prices</h2>
 <div class="card">✂️ Haircut - GH₵40</div>
-<div class="card">🪒 Beard Trim - GH₵1</div>
+<div class="card">🪒 Beard Trim - GH₵15</div>
 <div class="card">💈 Home Service - GH₵100</div>
 <div class="card">🔥 Kids Cut - GH₵20</div>
 </section>
@@ -213,9 +213,9 @@ margin-top:40px;
 <select id="service" required>
 <option value="">Select Service</option>
 <option value="Haircut - 40">Haircut - GH₵40</option>
-<option value="Beard - 1">Beard Trim - GH₵1</option>
+<option value="Beard - 15">Beard Trim - GH₵15</option>
 <option value="Home Service - 100">Home Service - GH₵100</option>
-<option value="Kids - 25">Kids Cut - GH₵20</option>
+<option value="Kids - 20">Kids Cut - GH₵20</option>
 </select>
 <select id="payment" required>
 <option value="">Payment Method</option>
@@ -305,7 +305,7 @@ document.getElementById("footer").classList.add("hidden");
 document.getElementById("successScreen").classList.remove("hidden");
 
 // Send email with booking details
-emailjs.send("service_pas05pj","template_8clcpvx",{
+emailjs.send("service_pas05pj","template_q9claop",{
 customer_name:booking.name,
 customer_phone:booking.phone,
 customer_email:booking.email,
@@ -373,7 +373,7 @@ sendEmail(name,phone,email,date,time,service);
 
 // EMAIL SEND FUNCTION FOR PAY AT SHOP
 function sendEmail(name,phone,email,date,time,service){
-emailjs.send("service_pas05pj","template_8clcpvx",{
+emailjs.send("service_pas05pj","template_q9claop",{
 customer_name:name,
 customer_phone:phone,
 customer_email:email,
